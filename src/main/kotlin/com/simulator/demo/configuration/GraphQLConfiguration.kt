@@ -37,7 +37,7 @@ class GraphQLConfiguration(
     fun dataLoader() = KotlinDataLoaderRegistryFactory(SymbolsDataLoaders(symbolsProxy))
 
     @Bean
-    fun graphQL(schema: GraphQLSchema) = GraphQL.Builder(schema)
+    fun graphQL(schema: GraphQLSchema) = GraphQL.newGraphQL(schema)
         .doNotAddDefaultInstrumentations()
         .instrumentation(DataLoaderLevelDispatchedInstrumentation())
         .build()
